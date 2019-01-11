@@ -61,4 +61,12 @@ public class SpecialRecord {
     public void setIsUse(String isUse) {
         this.isUse = isUse;
     }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }
