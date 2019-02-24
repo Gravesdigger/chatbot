@@ -1,0 +1,61 @@
+1550450399375	Move 'index.html' to 'templates'
+1550450403952	Move 'haha.html' to 'templates'
+1550450546742	Move 'index.html' to 'webapp'
+1550450792705	Move 'index.html' to 'templates'
+1550450795673	Move 'qqq.html' to 'templates'
+1550454205587	Move 'index.html' to 'webapp'
+1550454525416	Move 'index.html' to 'templates'
+1550454543319	Delete element
+1550454555660	Rename resource 'qqq.html'
+1550454571016	Rename resource 'index.html'
+1550454657240	Rename resource 'chating.html'
+1550454660724	Move 'login.html' to 'chating'
+1550454662411	Move 'webchat.html' to 'chating'
+1550454858464	Move 'login' to 'static'
+1550454872664	Copy folder
+1550456010441	Delete element
+1550456040107	Delete element
+1550456120571	Delete element
+1550456525014	Delete elements
+1550456532997	Delete elements
+1550457531841	Rename resource 'index.html'
+1550458435785	Delete elements
+1550458770034	Delete element
+1550458799070	Rename resource 'Wopop.html'
+1550461815064	Delete element
+1550461885517	Move 'webchat.html' to 'chating'
+1550473477744	Rename resource 'u10.png'
+1550474328085	Rename resource 'u12.png'
+1550476046787	Delete element
+1550476049864	Delete element
+1550492570122	Move 'logerror.html' to 'chating'
+1550492974619	Delete element
+1550537761872	Copy file
+1550543248664	Delete element
+1550564576920	Delete element
+1550564583860	Delete element
+1550564600299	Delete element
+1550564607016	Delete element
+1550564643581	Delete element
+1550564661551	Delete element
+1550564693768	Rename resource 'u72.png'
+1550631759097	Rename resource 'bg.jpg'
+1550631946933	Move 'chatbg.jpg' to 'webapp'
+1550635112237	Move 'chatbg.jpg' to 'static'
+1550645141565	Delete element
+1550645958582	Delete element
+1550647527380	Delete element
+1550647773190	Delete element
+1550647785385	Rename resource 'chatbg1.jpg'
+1550647918053	Delete element
+1550647925699	Rename resource 'chatbg1.jpg'
+1550647991212	Delete element
+1550648276111	Delete element
+1550657560810	Delete element
+1550657571424	Rename resource 'chatbg1.jpg'
+1550664201983	Delete element
+1550664385535	Delete element
+1550664508236	Delete element
+1550715092655	Delete element
+1550730218206	Rename type 'ChatController'
+1550731402079	Rename type 'Chat_record'

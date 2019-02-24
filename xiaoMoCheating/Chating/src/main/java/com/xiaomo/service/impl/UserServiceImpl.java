@@ -1,0 +1,40 @@
+package com.xiaomo.service.impl;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.xiaomo.entity.User;
+import com.xiaomo.repository.UserRepository;
+import com.xiaomo.service.UserService;
+
+/**
+ * 
+ * @author Jason
+ *
+ */
+@Service("userService")
+public class UserServiceImpl implements UserService{
+	
+	@Resource
+	private UserRepository userRepository;
+
+	@Override
+	public User searchByNameAndPassword(String name, String password) {
+		// TODO Auto-generated method stub
+		return userRepository.searchByNameAndPassword(name, password);
+	}
+
+	@Override
+	public User searchByName(String name) {
+		// TODO Auto-generated method stub
+		return userRepository.searchByName(name);
+	}
+
+	@Override
+	public void saveUser(User user) {
+		// TODO Auto-generated method stub
+		userRepository.save(user);
+	}
+	
+}

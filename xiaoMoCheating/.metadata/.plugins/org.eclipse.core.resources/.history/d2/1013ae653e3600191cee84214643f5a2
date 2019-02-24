@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"></meta>
+    <title>小莫客服</title>
+    <style type="text/css">
+        .user_mode{
+            width:250px;
+            height:600px;
+            border:1px solid #666;
+            margin-left:520px;
+            margin-top:130px;
+            background:rgb(46,50,56);
+            float: left;
+        }
+        .talk_con{
+            width:600px;
+            height:600px;
+            border:1px solid #666;
+            border-left:0px;
+            margin-top:130px;
+            float: left;
+            background-color: #EEEEEE;
+        }
+        .talk_title{
+            width: 540px;
+            height: 50px;
+            margin-left:30px;
+            margin-top:5px;
+            background-color: #EEEEEE;
+        }
+        .talkshow{
+            width:540px;
+            height:420px;
+            border-top:1px solid rgb(214,214,214);
+            border-bottom:1px solid rgb(214,214,214);
+            background-color: #EEEEEE;
+            margin-left:30px;
+            margin-top:2px;
+            overflow:auto;
+            
+        }
+        .talk_input{
+            width:580px;
+            margin:10px auto 0;
+            border: none;
+        }
+        .talkwords{
+            width:530px;
+            height:70px;
+            padding:0px;
+            margin-left:23px;
+            outline:none;
+            text-indent:10px;
+            border: none;
+            background-color: #EEEEEE;
+        }        
+        .talk_sub{
+            width:110px;
+            height:27px;
+            float:right;
+            margin-right: 40px;
+        }
+        .atalk{
+           margin:10px; 
+        }
+        .atalk span{
+            display:inline-block;
+            background:rgb(255,255,255);
+            border-radius:10px;
+            color:black;
+            padding:5px 10px;
+        }
+        .btalk{
+            margin:10px;
+            text-align:right;
+        }
+        .btalk span{
+            display:inline-block;
+            background:rgb(178,226,129);
+            border-radius:10px;
+            color:black;
+            padding:5px 10px;
+            margin-left: 100px;
+        }
+        .chat{
+            background-size:100% 100%;
+        	min-height:1000px;
+        	min-width:1000px;
+            background-image: url("../../chatbg.png");
+            background-repeat: no-repeat;
+        }
+    </style>
+    <script type="text/javascript">      
+    // 
+            function submitTalk(){
+            	var talkShow = document.getElementById("talkshow");
+                var userWords = document.getElementById("talkwords");
+    	        //判空
+                if(userWords.value == ""){
+	                 // 消息为空时弹窗
+                    alert("消息不能为空");
+                    return;
+                }
+                //定义空字符串
+                var str = "";
+                str = '<div class="btalk"><span>' + userWords.value +'</span></div>' ;
+                var word="words="+userWords.value;
+                document.getElementById("talkwords").value="";
+                talkshow.innerHTML = talkshow.innerHTML + str;
+                
+                var xmlHttp;
+        		if(window.XMLHttpRequest){
+        			xmlHttp=new XMLHttpRequest();
+        		}else{
+        			xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+        		}
+        		xmlHttp.onreadystatechange=function(){
+        			if(xmlHttp.readyState==4){
+        				if(xmlHttp.status==200){
+        				   str = '<div class="atalk"><span>' + xmlHttp.responseText +'</span></div>';
+        				   talkshow.innerHTML = talkshow.innerHTML + str;
+        				}
+        			}
+        		};
+        		xmlHttp.open("post", "/chat/server", true);
+        	    xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        	    xmlHttp.send(word);
+               
+            }
+            
+    </script>
+</head>
+<body class="chat">
+    <div class="user_mode">
+        <img src="/Wopop_files/userimg.jpg" style="width: 50px;height: 50px;margin-top: 20px;margin-left: 10px;float: left;"></img>
+        <span style="font-size: 20px;color: rgb(255,255,255);float: left;margin-top: 35px;margin-left: 15px;" th:text="${session.currentUser.getName()}"></span>
+        
+    </div>
+    <div class="talk_con">
+        <div class="talk_title">
+             <img src="/Wopop_files/chattitleico.png" style="margin-left: 110px;margin-top: 23px;float: left;"></img>
+             <span style="font-weight: bold;font-size: 15px;margin-left: 15px;margin-top: 27px;float: left;">小莫智能客服为您服务-</span>
+             <span style="font-size: 15px;margin-left: 13px;margin-top: 27px;float: left;">人工客服在线</span>
+        </div>
+        <div class="talkshow" id="talkshow">
+            <div class="atalk"><span id="asay">我是您的保险智能管家小莫，请问有什么能帮您的吗？</span></div>
+            <!-- <div class="btalk"><span id="bsay">B说：还没呢，你呢？</span></div> -->
+        </div>
+        <div class="talk_input">
+            <textarea style="font-size: 15px;" class="talkwords" id="talkwords"></textarea>
+            <input type="button" onclick="submitTalk()" class="talk_sub" value="发送" />
+        </div>
+    </div>
+</body>
+</html>

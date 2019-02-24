@@ -1,0 +1,39 @@
+package com.xiaomo.controller;
+
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/chat")
+public class ChatController {
+	
+	@RequestMapping("/server")
+	public void chatserver(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String words = request.getParameter("words");
+		String ansWords;
+		System.out.println("aa");
+		System.out.println(words);
+		if(words.equals("你好")) {
+		   ansWords = "好你妹!";
+		}else if(words.equals("你大爷的")) {
+		   ansWords = "说尼玛呢";
+		}else if(words.equals("算你牛逼")) {
+		   ansWords = "弟弟行为？";
+		}else {
+		   ansWords = "思思开开和强强还没教我这些，要不你以后再问。";
+		}
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+		out.println(ansWords);
+		out.flush();
+		out.close();
+		
+		//将对话存至数据库
+		
+	}
+}

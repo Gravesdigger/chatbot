@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+</head>
+<body>
+<form action="${pageContext.request.contextPath }/user/login" method="post">
+      name:<input type="text" id="name" name="name" value="user.name"/>
+      password:<input type="password" id="name" name="password" value="user.password"/>
+      <input type="submit" value="login"/><font color="red">${errorMsg }</font>
+</form>
+</body>
+</html>

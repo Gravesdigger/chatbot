@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"></meta>
+<title>Insert title here</title>
+<script type="text/javascript">
+function error() {
+	alert("用户名或密码有误！");
+    return "user/index";
+}
+error;
+</script>
+</head>
+<body>
+
+</body>
+</html>

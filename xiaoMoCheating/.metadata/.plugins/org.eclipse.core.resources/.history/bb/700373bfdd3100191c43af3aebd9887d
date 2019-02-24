@@ -1,0 +1,5 @@
+package com.xiaomo.repository;
+
+public interface UserRepository {
+
+}

@@ -1,0 +1,5 @@
+package com.xiaomo.service;
+
+public interface ChatRecordService {
+
+}

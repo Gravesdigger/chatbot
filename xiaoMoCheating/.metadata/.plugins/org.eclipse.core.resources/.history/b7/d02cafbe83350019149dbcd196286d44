@@ -1,0 +1,26 @@
+package com.xiaomo.controller;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/chat")
+public class ChatController {
+	
+	@RequestMapping("/server")
+	public void chatserver(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String words = request.getParameter("words");
+		System.out.println(words);
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+		out.println("ajax返回文本");
+		out.flush();
+		out.close();
+	}
+}

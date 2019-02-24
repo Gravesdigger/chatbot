@@ -1,0 +1,13 @@
+package com.xiaomo.service;
+
+import com.xiaomo.entity.ChatRecord;
+
+/**
+ * 聊天记录接口
+ * @author Jason
+ *
+ */
+public interface ChatRecordService {
+	
+	public void saveChatRecord(ChatRecord chatRecord);
+}

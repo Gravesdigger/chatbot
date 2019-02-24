@@ -1,0 +1,17 @@
+package com.xiaomo.service;
+
+/**
+ * 用户service接口
+ * @author Jason
+ *
+ */
+public interface UserService {
+
+	/**
+	 * 根据名字密码查找用户
+	 * @param name
+	 * @param password
+	 * @return
+	 */
+	public int search(String name, String password);
+}

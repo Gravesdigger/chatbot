@@ -1,0 +1,17 @@
+package com.xiaomo.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+//@Entity
+//@Table(name="chat_record")
+public class ChatRecord {
+
+	Integer id;
+	
+	String add_time;
+	
+	String answer;
+	
+	
+}

@@ -1,0 +1,38 @@
+package com.xiaomo.controller;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.xiaomo.entity.User;
+import com.xiaomo.service.UserService;
+
+@Controller
+@RequestMapping("/user")
+public class UserController {
+
+	@Resource
+	private UserService userService;
+	
+	@RequestMapping("/login")
+	public String login(User user,HttpServletRequest request){
+		User resultUser=userService.searchByNameAndPassword(user.getName(), user.getPassword());
+		if(resultUser==null){
+			return "qqq";
+		}else{
+			HttpSession session=request.getSession();
+			session.setAttribute("currentUser", resultUser);
+			return "haha";
+		}
+	}
+	
+	@RequestMapping("/star")
+    public String login() {
+        return "index";
+    }
+
+}

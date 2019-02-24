@@ -1,0 +1,35 @@
+package com.xiaomo.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="chat_record")
+public class ChatRecord {
+
+	@Id
+	@GeneratedValue
+	private Integer id;
+	
+	@Column(length=200)
+	private String add_time;
+	
+	@Column(length=300)
+	private String answer;
+	
+	private boolean is_bot;
+	
+	private boolean is_reply;
+	
+	@Column(length=300)
+	private String question;
+	
+	private String service_id;
+	
+	private String service_name;
+	
+	private Integer user_id;
+}

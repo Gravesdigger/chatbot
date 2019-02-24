@@ -1,0 +1,10 @@
+package com.xiaomo.service;
+
+/**
+ * 聊天记录接口
+ * @author Jason
+ *
+ */
+public interface ChatRecordService {
+
+}

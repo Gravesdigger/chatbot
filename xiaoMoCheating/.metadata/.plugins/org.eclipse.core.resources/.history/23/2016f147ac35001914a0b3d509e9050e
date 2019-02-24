@@ -1,0 +1,63 @@
+package com.xiaomo.controller;
+
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.xiaomo.entity.ChatRecord;
+import com.xiaomo.entity.User;
+import com.xiaomo.service.ChatRecordService;
+
+@Controller
+@RequestMapping("/chat")
+public class ChatRecordController {
+	
+	@Resource
+	private ChatRecordService chatRecordService;
+	
+	@RequestMapping("/server")
+	public void chatserver(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String words = request.getParameter("words");
+		String ansWords;
+		if(words.equals("你好")) {
+		   ansWords = "好你妹!";
+		}else if(words.equals("你大爷的")) {
+		   ansWords = "说尼玛呢";
+		}else if(words.equals("算你牛逼")) {
+		   ansWords = "弟弟行为？";
+		}else {
+		   ansWords = "思思开开和强强还没教我这些，要不你以后再问。";
+		}
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+		out.println(ansWords);
+		out.flush();
+		out.close();
+		
+		//将对话存至数据库
+		HttpSession session = request.getSession();
+		User currenteUser = (User)session.getAttribute("currentUser");
+		Date date = new Date();
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");
+		String currentDate = simpleDateFormat.format(date);
+		
+		ChatRecord chatRecord = new ChatRecord();
+		chatRecord.setAdd_time(currentDate);
+		chatRecord.setAnswer(ansWords);
+		chatRecord.setIs_bot(false);
+		chatRecord.setIs_reply(true);
+		chatRecord.setQuestion(words);
+		chatRecord.setUser_id(currenteUser.getId());
+		
+		chatRecordService.saveChatRecord(chatRecord);
+	}
+}
